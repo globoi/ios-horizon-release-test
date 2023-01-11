@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HorizonClient"
-  s.version          = "18.2.1"
+  s.version          = "18.2.2"
   s.summary          = "Cliente do Horizon para iOS."
   s.homepage         = "https://github.com/globoi/horizon-client-ios-bin-releases"
   s.author           = { "Globo.com" => "bigdata.pipeline@corp.globo.com" }

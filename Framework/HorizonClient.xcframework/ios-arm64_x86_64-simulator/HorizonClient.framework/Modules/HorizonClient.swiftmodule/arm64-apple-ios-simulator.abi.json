@@ -5156,7 +5156,7 @@
       "kind": "StringLiteral",
       "offset": 338,
       "length": 7,
-      "value": "\"3.0.4\""
+      "value": "\"3.0.5\""
     },
     {
       "filePath": "\/Users\/agripino.damasceno\/Developer\/horizon-client-ios\/HorizonClient\/HorizonClient\/Sources\/Config\/HorizonConfig.swift",
@@ -5330,13 +5330,6 @@
       "filePath": "\/Users\/agripino.damasceno\/Developer\/horizon-client-ios\/HorizonClient\/HorizonClient\/Sources\/Bus\/EventBus.swift",
       "kind": "IntegerLiteral",
       "offset": 534,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/agripino.damasceno\/Developer\/horizon-client-ios\/HorizonClient\/HorizonClient\/Sources\/Bus\/EventBus.swift",
-      "kind": "IntegerLiteral",
-      "offset": 573,
       "length": 1,
       "value": "0"
     },
