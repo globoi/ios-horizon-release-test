@@ -1,0 +1,11 @@
+framework module HorizonClient {
+  umbrella header "HorizonClient.h"
+
+  export *
+  module * { export * }
+}
+
+module HorizonClient.Swift {
+  header "HorizonClient-Swift.h"
+  requires objc
+}

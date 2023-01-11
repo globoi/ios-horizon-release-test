@@ -1,0 +1,124 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 effective-4.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-tvos16.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name HorizonClient
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+@_exported import HorizonClient
+import Swift
+import _Concurrency
+import _StringProcessing
+@objc(GLBUserTokenType) public enum UserTokenType : Swift.Int {
+  case glbid
+  case gst
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(GLBHorizonEnvironment) public enum HorizonEnvironment : Swift.Int {
+  case prod
+  case qa
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum ValidationResult {
+  case valid
+  case invalid([Swift.String])
+  public var valid: Swift.Bool {
+    get
+  }
+  public var errors: [Swift.String]? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(GLBHorizonClient) public class HorizonClient : ObjectiveC.NSObject {
+  public static var isReady: Swift.Bool
+  @objc public static func get(readyCallback: ((HorizonClient.HorizonClientError?) -> Swift.Void)? = nil) throws -> HorizonClient.HorizonClient
+  @objc public static func useSettings(tenant: Swift.String, horizonEnvironment: HorizonClient.HorizonEnvironment, advertisingId: Swift.String? = nil)
+  @objc public static func setLoggedUser(tokenType: HorizonClient.UserTokenType, token: Swift.String) throws
+  @objc public static func removeLoggedUser() throws
+  @objc public func getAnonymousUser(callbackUser: @escaping (Swift.String, Swift.String, Swift.String?) -> Swift.Void) throws
+  @objc public func getHsid(callbackHsid: @escaping (Swift.String) -> Swift.Void) throws
+  @objc public func send(schemaId: Swift.String, schemaVersion: Swift.String, contentType: Swift.String, url: Any, referer: Any = "", properties: [Swift.String : Any], relationId: Swift.String? = nil, handler: @escaping (HorizonClient.Event, HorizonClient.HorizonClientError?) -> Swift.Void)
+  @objc public static func createEvent(schemaId: Swift.String, schemaVersion: Swift.String, contentType: Swift.String, url: Any, referer: Any = "", properties: [Swift.String : Any], relationId: Swift.String? = nil) -> HorizonClient.Event
+  @objc public func send(events: Swift.Array<HorizonClient.Event>, relationId: Swift.String? = nil, handler: @escaping (HorizonClient.Event, HorizonClient.HorizonClientError?) -> Swift.Void)
+  @objc public func performFetch(with completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  public func setAdvertisingId(advertisingIdentifier: Swift.String)
+  public func removeAdvertisingId()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class Event : ObjectiveC.NSObject {
+  @objc final public let schemaId: Swift.String
+  @objc final public let schemaVersion: Swift.String
+  @objc final public let contentType: Swift.String
+  @objc final public let url: Any
+  @objc final public let referer: Any
+  @objc final public let properties: [Swift.String : Any]
+  @objc final public let relationId: Swift.String?
+  @objc deinit
+}
+public struct Token {
+}
+extension HorizonClient.Token : Swift.Equatable {
+}
+public func == (lt: HorizonClient.Token, rt: HorizonClient.Token) -> Swift.Bool
+@_inheritsConvenienceInitializers @objc public class HorizonClientError : Foundation.NSError {
+  @objc override dynamic public init(domain: Swift.String, code: Swift.Int, userInfo dict: [Swift.String : Any]? = nil)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class HorizonClientNotInitializedError : HorizonClient.HorizonClientError {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class HorizonClientNotReady : HorizonClient.HorizonClientError {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class InvalidDataForSpecifiedSchemaError : HorizonClient.HorizonClientError {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class UnknownError : HorizonClient.HorizonClientError {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class EventNotQueuedError : HorizonClient.HorizonClientError {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class SchemasInitializationError : HorizonClient.HorizonClientError {
+  @objc deinit
+}
+public enum Type : Swift.String {
+  case Object
+  case Array
+  case String
+  case Integer
+  case Number
+  case Boolean
+  case Null
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Schema {
+  public let title: Swift.String?
+  public let description: Swift.String?
+  public let type: [HorizonClient.`Type`]?
+  public init(_ schema: [Swift.String : Any])
+  public func validate(_ data: Any) -> HorizonClient.ValidationResult
+}
+public func validate(_ value: Any, schema: [Swift.String : Any]) -> HorizonClient.ValidationResult
+public struct HorizonClientNotConfiguredError : Swift.Error {
+}
+extension HorizonClient.UserTokenType : Swift.Equatable {}
+extension HorizonClient.UserTokenType : Swift.Hashable {}
+extension HorizonClient.UserTokenType : Swift.RawRepresentable {}
+extension HorizonClient.HorizonEnvironment : Swift.Equatable {}
+extension HorizonClient.HorizonEnvironment : Swift.Hashable {}
+extension HorizonClient.HorizonEnvironment : Swift.RawRepresentable {}
+extension HorizonClient.`Type` : Swift.Equatable {}
+extension HorizonClient.`Type` : Swift.Hashable {}
+extension HorizonClient.`Type` : Swift.RawRepresentable {}
